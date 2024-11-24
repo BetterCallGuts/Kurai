@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurai | {% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'my_own/framework/css/bootstrap.css' %}">
+    {% block css %}
+    {% endblock css %}
+</head>
+<body>
+
+    {% include 'components/navbar.html' %}
+
+    {% block content %}
+    {% endblock content  %}
+
+    {% include 'components/footer.html' %}
+
+
+    <script src="{% static 'my_own/framework/js/bootstrap.js' %}"></script>
+    {% block js %}
+    {% endblock js %}
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block title %} Detail page {% endblock title %}
+
+{% block css %}
+<link href="{% static 'my_own/framework/css/bootstrap-icons.css' %}" rel="stylesheet">
+{% endblock css %}
+
+
+{% block content %}
+ 
+    <h4 class="text-sm  px-5  py-3">Products  > <a href="#" class="text-decoration-none">Category Name</a> > <a href="#" class="text-decoration-none">Product Name</a></h4>
+    <hr>
+<div class="container my-5">
+    <!-- Product Detail Section -->
+    <div class="row">
+        <!-- Product Image and Thumbnails -->
+        <div class="col-md-6">
+            <!-- Main Product Image -->
+            <style>
+                #mainImage {
+                    transition: transform 0.3s ease;
+                    transform-origin: center center;
+                }
+                #mainImage:hover {
+                    transform: scale(2); /* Zoom in by 2 times */
+                }
+            </style>
+            
+            <div class="mb-3 overflow-hidden" style="position: relative; width: 500px; height: 500px;">
+                <img 
+                    id="mainImage" 
+                    src="https://via.placeholder.com/500x500" 
+                    alt="Product Image" 
+                    class="border border-secondary border-1 shadow-lg rounded img-fluid">
+            </div>
+            
+            <script>
+                const mainImage = document.getElementById('mainImage');
+            
+                mainImage.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = mainImage.getBoundingClientRect();
+                    const x = ((e.clientX - left) / width) * 100;
+                    const y = ((e.clientY - top) / height) * 100;
+            
+                    mainImage.style.transformOrigin = `${x}% ${y}%`;
+                });
+            </script>
+            <!-- Thumbnail Images -->
+            <div class="d-flex flex-wrap gap-2">
+                <img src="https://via.placeholder.com/1000x500" alt="Thumbnail 1"              class="border border-primary border-1    img-thumbnail thumb-img" style="width: 60px; height: 60px; object-fit: cover;" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/500x500" alt="Thumbnail 2"               class="border border-primary border-1    img-thumbnail thumb-img" style="width: 60px; height: 60px; object-fit: cover;" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/500x500/yellow/black/" alt="Thumbnail 3" class="border border-primary border-1    img-thumbnail thumb-img" style="width: 60px; height: 60px; object-fit: cover;" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/500x500" alt="Thumbnail 4"               class="border border-primary border-1    img-thumbnail thumb-img" style="width: 60px; height: 60px; object-fit: cover;" onclick="changeImage(this.src)">
+            </div>
+            
+        </div>
+        <!--  -->
+
+        
+        <!--  -->
+        <!-- Product Details -->
+        <div class="col-md-6 border-start border-primary border-4">
+            <h1 class="fw-bold">Product Name</h1>
+            <p class="text-muted">Category: <span class="text-dark">Electronics</span></p>
+            <h2 class="text-success">$299.99</h2>
+            <p><s>$500.00</s></p>
+            <p class="mt-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet erat vitae eros 
+                interdum, vel cursus ligula luctus. Fusce ac magna ut nulla lacinia tempor.
+            </p>
+            <div class="d-flex gap-2 mt-4">
+                <button class="btn btn-primary btn-lg">Add to Cart</button>
+                <button class="btn btn-success btn-lg">Buy Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript to change the main image when a thumbnail is clicked
+    function changeImage(src) {
+        document.getElementById('mainImage').src = src;
+    }
+</script>
+
+    <!-- ENd first cointainer -->
+<!-- Description -->
+
+<div class="container my-5">
+
+
+    
+    <!-- Details and Policy Section -->
+    <div class="row">
+        
+        <!-- Description and Reviews -->
+        <div class="col-md-8">
+            
+            <h3 class="fw-bold mb-4">Product Description</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet, ex at faucibus blandit, sapien sapien gravida ligula, nec malesuada turpis eros non nulla. Aenean a nisl vel justo pharetra vehicula non in nisl. Duis convallis auctor nisl, a pretium metus gravida sed.
+            </p>
+            <hr class="my-4">
+            
+            <div class="container my-5">
+                <!-- Add Review Section -->
+                <div class="row mt-5">
+                    <div class="col-md-8">
+                        <h3 class="fw-bold mb-4">Write a Review</h3>
+                        <form id="reviewForm">
+                            <!-- Star Rating -->
+                            <div class="mb-4">
+                                <label class="form-label">Your Rating</label>
+                                <div id="starRating" class="d-flex gap-1">
+                                    <i class="bi bi-star text-secondary fs-3 star" data-value="1"></i>
+                                    <i class="bi bi-star text-secondary fs-3 star" data-value="2"></i>
+                                    <i class="bi bi-star text-secondary fs-3 star" data-value="3"></i>
+                                    <i class="bi bi-star text-secondary fs-3 star" data-value="4"></i>
+                                    <i class="bi bi-star text-secondary fs-3 star" data-value="5"></i>
+                                </div>
+                                <input type="hidden" id="selectedRating" name="rating" value="0">
+                            </div>
+            
+                            <!-- Comment Input -->
+                            <div class="mb-4">
+                                <label for="reviewComment" class="form-label">Your Comment</label>
+                                <textarea id="reviewComment" name="comment" rows="4" class="form-control" placeholder="Write your review here..." ></textarea>
+                            </div>
+            
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+            
+                <!-- Display Submitted Reviews -->
+                
+            </div>
+            <!-- end add review -->
+            <h3 class="fw-bold mb-4">Customer Reviews</h3>
+            
+            <div class="d-flex align-items-start mb-3">
+                
+                <div class="me-3">
+                    <span class="badge bg-success">5 ★</span>
+                </div>
+                <p>
+                    "Amazing product! Delivered on time and exactly as described. Highly recommend!" – <strong>John D.</strong>
+                </p>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+                <div class="me-3">
+                    <span class="badge bg-warning">4 ★</span>
+                </div>
+                <p>
+                    "Good quality, but delivery took longer than expected. Otherwise, perfect!" – <strong>Jane S.</strong>
+                </p>
+            </div>
+            <a href="#" class="btn btn-outline-primary">View All Reviews</a>
+
+            
+        </div>
+
+
+
+<!-- end add review -->
+
+        <!-- Policies and Features -->
+        <div class="col-md-4 border-start border-secondary">
+            <h3 class="fw-bold mb-4">Our Policies</h3>
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-start mb-3">
+                    <span class="me-3 text-primary">
+                        <i class="bi bi-truck fs-4"></i>
+                    </span>
+                    <div>
+                        <h5 class="fw-bold mb-1">Fast Delivery</h5>
+                        <p class="mb-0">2-5 Days</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                    <span class="me-3 text-primary">
+                        <i class="bi bi-headset fs-4"></i>
+                    </span>
+                    <div>
+                        <h5 class="fw-bold mb-1">Online Support</h5>
+                        <p class="mb-0">Chat and Phone</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                    <span class="me-3 text-primary">
+                        <i class="bi bi-shield-check fs-4"></i>
+                    </span>
+                    <div>
+                        <h5 class="fw-bold mb-1">Order Protection</h5>
+                        <p class="mb-0">Secured Information</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                    <span class="me-3 text-primary">
+                        <i class="bi bi-gift fs-4"></i>
+                    </span>
+                    <div>
+                        <h5 class="fw-bold mb-1">Promotion Gift</h5>
+                        <p class="mb-0">Special Offers!</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                    <span class="me-3 text-primary">
+                        <i class="bi bi-arrow-repeat fs-4"></i>
+                    </span>
+                    <div>
+                        <h5 class="fw-bold mb-1">Money Back</h5>
+                        <p class="mb-0">Return Over 14 Days</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- end description -->
+
+
+
+<!-- Suggested Products -->
+
+    <hr>
+    <h3 class="mb-4   text-start px-5 ">Suggested Products</h3>
+    <hr>
+    <div class="container mb-5 fw-bold">
+        <!-- Similar Items Section -->
+        <div class="mt-5">
+            <div class="row">
+                <!-- Similar Item 1 -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Similar Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 1</h5>
+                            <p class="card-text text-success">$199.99</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Similar Item 2 -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Similar Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 2</h5>
+                            <p class="card-text text-success">$249.99</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Similar Item 3 -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Similar Product 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 3</h5>
+                            <p class="card-text text-success">$299.99</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Similar Item 4 -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x300" class="card-img-top" alt="Similar Product 4">
+                        <div class="card-body">
+                            <h5 class="card-title">Product 4</h5>
+                            <p class="card-text text-success">$349.99</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock content %}
+
+
+
+
+{% block js %}
+<script>
+    // Star Rating Interaction
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('selectedRating');
+    const reviewsContainer = document.getElementById('reviewsContainer');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => {
+            stars.forEach((s, i) => {
+                s.classList.toggle('text-warning', i <= index);
+                s.classList.toggle('text-secondary', i > index);
+            });
+        });
+
+        star.addEventListener('click', () => {
+            ratingInput.value = star.getAttribute('data-value');
+        });
+
+        star.addEventListener('mouseout', () => {
+            stars.forEach((s, i) => {
+                s.classList.toggle('text-warning', i < ratingInput.value);
+                s.classList.toggle('text-secondary', i >= ratingInput.value);
+            });
+        });
+    });
+
+    // Handle Form Submission
+    document.getElementById('reviewForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const rating = ratingInput.value;
+        const comment = document.getElementById('reviewComment').value;
+
+        if (rating === "0") {
+            alert("Please select a rating before submitting!");
+            return;
+        }
+
+        // Create a new review element
+        const reviewHTML = `
+            <div class="d-flex align-items-start mb-3">
+                <div class="me-3">
+                    ${'<i class="bi bi-star-fill text-warning"></i>'.repeat(rating)}
+                    ${'<i class="bi bi-star text-secondary"></i>'.repeat(5 - rating)}
+                </div>
+                <p>${comment} – <strong>Anonymous</strong></p>
+            </div>
+        `;
+
+        // Add the review to the reviews container
+        reviewsContainer.insertAdjacentHTML('beforeend', reviewHTML);
+
+        // Clear the form
+        document.getElementById('reviewForm').reset();
+        stars.forEach(star => star.classList.remove('text-warning'));
+        stars.forEach(star => star.classList.add('text-secondary'));
+        ratingInput.value = "0";
+
+        // Remove the "No reviews" message if present
+        const noReviewsMessage = reviewsContainer.querySelector('p.text-muted');
+        if (noReviewsMessage) {
+            noReviewsMessage.remove();
+        }
+    });
+</script>
+
+    <!-- Bootstrap JS -->
+    <script 
+    src="{% static 'my_own/framework/js/bootstrap.js' %}">
+  </script>
+
+{% endblock js %}

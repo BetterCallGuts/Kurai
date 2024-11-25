@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up and Login with Google</title>
-    <link href="./static/framework/css/bootstrap.css" rel="stylesheet">
+{% extends 'components/base.html' %}
+
+
+{% block title %} Auth page {% endblock title %}
+
+
+
+{% block css %}
+
     <style>
         .form-container {
             max-width: 400px;
@@ -38,9 +40,10 @@
         .google-btn:hover {
             background-color: #f1f1f1;
         }
-    </style>
-</head>
-<body>
+        </style>
+{% endblock css %}
+
+{% block content %}
     <div class="container my-5">
         <!-- Sign Up Form -->
         <div id="signup" class="form-container border p-4 rounded shadow">
@@ -108,7 +111,9 @@
             </p>
         </div>
     </div>
+    {% endblock content %}
 
+    {% block js %}
     <script>
         // Toggle between Sign-Up and Login forms
         const signupForm = document.getElementById('signup');
@@ -127,5 +132,5 @@
             });
         });
     </script>
-</body>
-</html>
+
+    {% endblock js %}

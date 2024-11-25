@@ -27,7 +27,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INSTALLED_APPS = [
     # third party
-
+    "jazzmin",
+    
     # built-in
     'django.contrib.admin',
     'django.contrib.auth',

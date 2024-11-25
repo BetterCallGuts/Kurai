@@ -1,20 +1,20 @@
 
 {% extends 'components/base.html' %}
-
+{% load static %}
 
 {% block title %} {% endblock title %}
 
 
 {% block css %}
 
-<link rel="stylesheet" href="./static/framework/css/select.css">
+<link rel="stylesheet" href="{% static 'my_own/framework/css/select.css' %}">
 {% endblock css %}
 
 
 
 
 
-
+{% block content %}
       <style>
 
         .f_section_background{
@@ -397,15 +397,15 @@
 </footer>
 
 
-      <script src="./static/framework/js/jquery.js"></script>
+      <script src="{% static 'my_own/framework/js/jquery.js' %}"></script>
     
     <script 
-       src="./static/framework/js/propper.js" ></script>
+       src="{% static 'my_own/framework/js/propper.js' %}" ></script>
 
     <script 
-      src="./static/framework/js/bootstrap.js">
+      src="{% static 'my_own/framework/js/bootstrap.js' %}">
     </script>
-  <script src="./static/framework/js/select.js"></script>
+  <script src="{% static 'my_own/framework/js/select.js' %}"></script>
 
 
 
@@ -425,3 +425,5 @@
   </script>
 
 
+
+{% endblock content %}

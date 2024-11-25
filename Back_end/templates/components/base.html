@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurai | {% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'my_own/framework/css/bootstrap.css' %}">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+    </style>
     {% block css %}
     {% endblock css %}
 </head>
@@ -20,6 +25,9 @@
 
 
     <script src="{% static 'my_own/framework/js/bootstrap.js' %}"></script>
+    <script src="{% static 'my_own/framework/js/propper.js'   %}"></script>
+    <script src="{% static 'my_own/framework/js/jquery.js'    %}"></script>
+
     {% block js %}
     {% endblock js %}
 
